@@ -3,29 +3,28 @@ const app = express();
 const port = 3000;
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 app.get("/", function (req, res) {
     setInterval(() => {
-        console.log("GET ping");
+        console.log("/ ping");
     }, 1000);
-    setTimeout(() => {
-        console.log("GET Hello World!");
-        res.send("GET Hello World!");
-    }, 3100);
+    console.log("/ Hello World!");
+    res.send("/ Hello World!");
 });
 
-app.post("/test", function(req, res) {
+app.get("/test", function(req, res) {
     setInterval(() => {
-        console.log("POST ping: " + req.body.test);
+        console.log("/test ping");
     }, 1000);
     setTimeout(() => {
-        console.log("POST Hello World!");
-        res.send("POST Hello World!");
+        console.log("/test Hello World!");
+        res.send("/test Hello World!");
     }, 3100);
 });
 
 app.listen(port, function () {
     console.log(`server listening on port ${port}!`);
 });
+
+process.on('SIGTERM', () => console.log('Received SIGTERM signal, shutting down gracefully'));
+process.on('SIGINT', () => console.log('Received SIGINT signal, shutting down gracefully'));
