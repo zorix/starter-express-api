@@ -7,22 +7,20 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get("/", function (req, res) {
-    res.send("GET Hello World!");
     setInterval(() => {
-        console.log("ping");
+        console.log("GET ping");
     }, 1000);
     setTimeout(() => {
-        res.send({status: "GET"});
+        res.send("GET Hello World!");
     }, 3100);
 });
 
 app.post("/test", function(req, res) {
-    res.send("POST Hello World!");
     setInterval(() => {
         console.log("POST ping: " + req.body.test);
     }, 1000);
     setTimeout(() => {
-        res.send({status: "POST"});
+        res.send("POST Hello World!");
     }, 3100);
 });
 
