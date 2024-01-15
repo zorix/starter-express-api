@@ -11,6 +11,7 @@ app.get("/", function (req, res) {
         console.log("GET ping");
     }, 1000);
     setTimeout(() => {
+        console.log("GET Hello World!");
         res.send("GET Hello World!");
     }, 3100);
 });
@@ -20,6 +21,7 @@ app.post("/test", function(req, res) {
         console.log("POST ping: " + req.body.test);
     }, 1000);
     setTimeout(() => {
+        console.log("POST Hello World!");
         res.send("POST Hello World!");
     }, 3100);
 });
